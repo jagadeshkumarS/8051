@@ -1,3 +1,0 @@
-".\Objects\project2.obj" 
-TO ".\Objects\embedded" 
-PRINT(".\Listings\embedded.m51")
