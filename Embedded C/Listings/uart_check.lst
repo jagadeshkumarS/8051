@@ -1,0 +1,111 @@
+C51 COMPILER V9.60.0.0   UART_CHECK                                                        03/06/2020 23:23:28 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE UART_CHECK
+OBJECT MODULE PLACED IN .\Objects\uart_check.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE uart_check.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listing
+                    -s\uart_check.lst) TABS(2) OBJECT(.\Objects\uart_check.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include<stdlib.h>
+   3          void uart_init(void);
+   4          void uart_tx(unsigned char c);
+   5          unsigned char uart_rx(void);
+   6          void uart_stx(unsigned char *s);
+   7          //unsigned char *uart_srx(unsigned char *);
+   8          void main()
+   9          {
+  10   1        unsigned char i=0;
+  11   1        char *p = (char *)malloc(1);
+  12   1        uart_init();
+  13   1      
+  14   1        while(1)
+  15   1        {
+  16   2          for(i=0;;i++)
+  17   2          {
+  18   3            realloc(p,i+1);
+  19   3            p[i] = uart_rx();
+  20   3            if(p[i]=='\r')
+  21   3              break;
+  22   3          }
+  23   2          p[i] = '\0';
+  24   2          uart_stx(p);
+  25   2        }
+  26   1      }
+  27          
+  28          void uart_init(void)
+  29          {
+  30   1        SCON = 0x50;
+  31   1        TMOD = 0x20;
+  32   1        TH1=TL1=253;
+  33   1        TR1 = 1;
+  34   1      }
+  35          
+  36          void uart_tx(unsigned char c)
+  37          {
+  38   1        SBUF = c;
+  39   1        while(TI==0);
+  40   1        TI = 0;
+  41   1      }
+  42          
+  43          unsigned char uart_rx(void)
+  44          {
+  45   1        while(RI==0);
+  46   1        RI = 0;
+  47   1        return SBUF;
+  48   1      }
+  49          
+  50          void uart_stx(unsigned char *s)
+  51          {
+  52   1        while(*s)
+  53   1          uart_tx(*s++);
+  54   1      }
+C51 COMPILER V9.60.0.0   UART_CHECK                                                        03/06/2020 23:23:28 PAGE 2   
+
+  55          
+  56          /*
+  57          unsigned char *uart_srx()
+  58          {
+  59            unsigned char i=0;
+  60            char *p = (char *)malloc(i+1);
+  61            do
+  62            {
+  63              if(i>0)
+  64                realloc(p,i+1);
+  65              p[i] = uart_rx();
+  66            }while(p[i++]!='\r');
+  67            p[i] = '\0';
+  68            return p;
+  69          }
+  70          */
+  71          
+  72          /*
+  73          unsigned char *uart_srx(unsigned char *p)
+  74          {
+  75            unsigned char i;
+  76            for(i=0;;i++)
+  77            {
+  78              p[i] = uart_rx();
+  79              if(p[i] == '\r')
+  80                break;
+  81            }
+  82            p[i] = '\0';
+  83            return p;
+  84          }
+  85          */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    166    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
