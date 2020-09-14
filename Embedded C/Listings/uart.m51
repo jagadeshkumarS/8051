@@ -1,0 +1,101 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    03/06/2020  23:49:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\uart_int.obj TO .\Objects\uart PRINT (.\Listings\uart.m51)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\uart_int.obj (UART_INT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?COPY)
+
+
+LINK MAP OF MODULE:  .\Objects\uart (UART_INT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0009H     UNIT         _DATA_GROUP_
+            IDATA   0011H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0020H                  *** GAP ***
+            CODE    0023H     0003H     ABSOLUTE     
+                    0026H     07DAH                  *** GAP ***
+            CODE    0800H     00F6H     UNIT         ?C?LIB_CODE
+            CODE    08F6H     0027H     UNIT         ?PR?MAIN?UART_INT
+            CODE    091DH     000CH     UNIT         ?C_C51STARTUP
+            CODE    0929H     0009H     UNIT         ?CO?UART_INT
+            CODE    0932H     0003H     UNIT         ?PR?SERIAL?UART_INT
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\uart (UART_INT)
+
+
+SEGMENT                          DATA_GROUP 
+  +--> CALLED SEGMENT          START    LENGTH
+----------------------------------------------
+?C_C51STARTUP                  -----    -----
+  +--> ?PR?MAIN?UART_INT
+
+?PR?MAIN?UART_INT              0008H    0009H
+  +--> ?CO?UART_INT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\uart (UART_INT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        UART_INT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  03/06/2020  23:49:10  PAGE 2
+
+
+  C:0932H         PUBLIC        serial
+  B:00A8H.7       PUBLIC        EA
+  B:00A8H.4       PUBLIC        ES
+  B:0098H.1       PUBLIC        TI
+  C:08F6H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  C:0929H         SYMBOL        _?ix1000
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        p
+  D:0007H         SYMBOL        i
+  -------         ENDDO         
+  C:08F6H         LINE#         2
+  C:08F6H         LINE#         3
+  C:08F6H         LINE#         4
+  C:0909H         LINE#         5
+  C:090DH         LINE#         6
+  C:0916H         LINE#         7
+  C:091BH         LINE#         8
+  -------         ENDPROC       MAIN
+  -------         PROC          SERIAL
+  C:0932H         LINE#         11
+  C:0932H         LINE#         13
+  C:0934H         LINE#         14
+  -------         ENDPROC       SERIAL
+  -------         ENDMOD        UART_INT
+
+  -------         MODULE        ?C?COPY
+  C:08D0H         PUBLIC        ?C?COPY
+  -------         ENDMOD        ?C?COPY
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0036H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=18.0 xdata=0 code=315
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

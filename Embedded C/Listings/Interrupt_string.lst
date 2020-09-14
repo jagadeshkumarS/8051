@@ -1,0 +1,35 @@
+C51 COMPILER V9.60.0.0   INTERRUPT_STRING                                                  03/22/2020 21:52:19 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INTERRUPT_STRING
+OBJECT MODULE PLACED IN .\Objects\Interrupt_string.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Interrupt_string.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\L
+                    -istings\Interrupt_string.lst) TABS(2) OBJECT(.\Objects\Interrupt_string.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          code struct dat
+   3          {
+   4            long int id;
+   5            char name[7];
+   6            char amt;
+   7          }d[3] = {{12345671,"Apple",10},{12345672,"Mango",20},{12345673,"Orange",30}};
+   8          void main()
+   9          {
+  10   1        while(1);
+  11   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =      2    ----
+   CONSTANT SIZE    =     36    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,47 @@
+C51 COMPILER V9.60.0.0   PGM                                                               03/22/2020 17:01:39 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE PGM
+OBJECT MODULE PLACED IN .\Objects\pgm.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE pgm.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\pgm.l
+                    -st) TABS(2) OBJECT(.\Objects\pgm.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include"delay_driver.h"
+   3          #include"lcd_driver.h"
+   4          #include"i2c_driver.h"
+   5          //#include"spi_driver.h"
+   6          
+   7          void main()
+   8          {
+   9   1        unsigned char t[] = {0x50,0x59,0x71};
+  10   1        unsigned char d[] = {0x01,0x22,0x03,0x20};
+  11   1        lcd_init();
+  12   1        lcd_str("RTC:");
+  13   1        lcd_cmd(0xc0);
+  14   1        time_write(t);
+  15   1        date_write(d);
+  16   1        while(1)
+  17   1        {
+  18   2          lcd_cmd(0x84);
+  19   2          time_read();
+  20   2          lcd_cmd(0xc0);
+  21   2          date_read();
+  22   2        }
+  23   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    939    ----
+   CONSTANT SIZE    =     46    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      32
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
