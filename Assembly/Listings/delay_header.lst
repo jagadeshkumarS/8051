@@ -1,0 +1,81 @@
+A51 MACRO ASSEMBLER  DELAY_HEADER                                                         02/27/2020 21:52:48 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\delay_header.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE delay_header.asm SET(SMALL) DEBUG PRINT(.\Listings\delay_header.lst) OB
+                      JECT(.\Objects\delay_header.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+----                   1     cseg at 0050h
+0050                   2     delay_1ms:
+0050 78F1              3             mov r0,#241
+0052 D8FE              4             djnz r0,$
+0054 D8FE              5             djnz r0,$
+0056 00                6             nop
+0057 22                7             ret
+                       8     
+0058                   9     delay_100ms:
+0058 7963             10             mov r1,#99
+005A                  11             rep100:
+005A 1150             12             acall delay_1ms
+005C D9FC             13             djnz r1,rep100
+005E 788E             14             mov r0,#142
+0060 D8FE             15             djnz r0,$
+0062 D8FE             16             djnz r0,$
+0064 22               17             ret
+                      18             
+0065                  19     delay_500ms:
+0065 1158             20             acall delay_100ms
+0067 1158             21             acall delay_100ms
+0069 1158             22             acall delay_100ms
+006B 1158             23             acall delay_100ms
+006D 7B63             24             mov r3,#99
+006F                  25             rep11:
+006F 1150             26             acall delay_1ms
+0071 DBFC             27             djnz r3,rep11
+0073 798E             28             mov r1,#142
+0075 D9FE             29             djnz r1,$
+0077 D9FE             30             djnz r1,$
+0079 22               31             ret
+                      32             
+007A                  33     delay_1s:
+007A 1165             34             acall delay_500ms
+007C 1158             35             acall delay_100ms
+007E 1158             36             acall delay_100ms
+0080 1158             37             acall delay_100ms
+0082 1158             38             acall delay_100ms
+0084 7963             39             mov r1,#99
+0086                  40             rep1s:
+0086 1150             41             acall delay_1ms
+0088 D9FC             42             djnz r1,rep1s
+008A 788E             43             mov r0,#142
+008C D8FE             44             djnz r0,$
+008E D8FE             45             djnz r0,$
+0090 22               46             ret     
+                      47             
+                      48             public delay_1ms,delay_100ms,delay_500ms,delay_1s
+                      49             
+                      50             end
+A51 MACRO ASSEMBLER  DELAY_HEADER                                                         02/27/2020 21:52:48 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+DELAY_100MS. . . .  C ADDR   0058H   A   
+DELAY_1MS. . . . .  C ADDR   0050H   A   
+DELAY_1S . . . . .  C ADDR   007AH   A   
+DELAY_500MS. . . .  C ADDR   0065H   A   
+REP100 . . . . . .  C ADDR   005AH   A   
+REP11. . . . . . .  C ADDR   006FH   A   
+REP1S. . . . . . .  C ADDR   0086H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

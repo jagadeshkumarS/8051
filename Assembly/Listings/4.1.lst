@@ -1,0 +1,31 @@
+A51 MACRO ASSEMBLER  4_1                                                                  02/27/2020 11:03:52 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\4.1.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE 4.1.asm SET(SMALL) DEBUG PRINT(.\Listings\4.1.lst) OBJECT(.\Objects\4.1
+                      .obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+----                   1     cseg at 0
+0000 7800              2             mov r0,#00h
+0002                   3             rep:
+0002 08                4             inc r0
+0003 B8E1FC            5             cjne r0,#0E1h,rep
+                       6             end
+A51 MACRO ASSEMBLER  4_1                                                                  02/27/2020 11:03:52 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+REP. . . . . . . .  C ADDR   0002H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
