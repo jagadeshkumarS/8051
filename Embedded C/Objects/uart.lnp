@@ -1,3 +1,0 @@
-".\Objects\uart_int.obj" 
-TO ".\Objects\uart" 
-PRINT(".\Listings\uart.m51")
