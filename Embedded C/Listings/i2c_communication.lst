@@ -1,0 +1,53 @@
+C51 COMPILER V9.60.0.0   I2C_COMMUNICATION                                                 03/13/2020 09:06:54 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE I2C_COMMUNICATION
+OBJECT MODULE PLACED IN .\Objects\i2c_communication.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE i2c_communication.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\
+                    -Listings\i2c_communication.lst) TABS(2) OBJECT(.\Objects\i2c_communication.obj)
+
+line level    source
+
+   1          #include<reg51.h>
+   2          #include"delay_driver.h"
+   3          #include"i2c_driver.h"
+   4          #include"lcd_driver.h"
+   5          unsigned char time[] = {0x50,0x59,0x71};
+   6          void main()
+   7          {
+   8   1        unsigned char t,s;
+   9   1          signed char i;
+  10   1        lcd_init();
+  11   1        lcd_str("i2c RTC:");
+  12   1        for(i=0;i<3;i++)
+  13   1          i2c_slavewrite(0xd0,0x00+i,time[i]);
+  14   1        while(1) {
+  15   2          lcd_cmd(0xc0);
+  16   2          for(i=2;i>=0;i--) {
+  17   3            t = i2c_slaveread(0xd0,0x00+i);
+  18   3            if(i==2) {
+  19   4              if(0x40&t) s=(0x20&t)?1:0;
+  20   4                t = 0x1f&t;
+  21   4            }
+  22   3            lcd_num(((t>>4)*10)+(t&0x0f));
+  23   3            if(i!=0) lcd_data(':');
+  24   3          }
+  25   2          lcd_data(' ');
+  26   2          if(s==1) lcd_str("PM  ");
+  27   2          else lcd_str("AM  ");
+  28   2        }
+  29   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    715    ----
+   CONSTANT SIZE    =     19    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      3      21
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

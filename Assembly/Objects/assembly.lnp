@@ -1,0 +1,4 @@
+".\Objects\led.obj",
+".\Objects\delay_header.obj" 
+TO ".\Objects\assembly" 
+PRINT(".\Listings\assembly.m51")
